@@ -1,0 +1,223 @@
+body {
+  margin: 0;
+  padding: 10px;
+  background: transparent;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  user-select: none;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.container {
+  background: linear-gradient(135deg, rgba(255, 255, 204, 0.95), rgba(255, 248, 220, 0.95));
+  padding: 15px;
+  border-radius: 12px;
+  width: 360px;
+  height: 460px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  position: relative;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.container:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #8B4513;
+  margin: 0;
+  flex: 1;
+}
+
+.drag-indicator {
+  font-size: 16px;
+  cursor: help;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.drag-indicator:hover {
+  opacity: 1;
+}
+
+textarea {
+  width: 100%;
+  height: 280px;
+  border: none;
+  resize: none;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.3);
+  outline: none;
+  border-radius: 8px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-family: 'Consolas', 'Monaco', monospace;
+  line-height: 1.4;
+  color: #333;
+  margin-bottom: 10px;
+  flex: 1;
+  -webkit-app-region: no-drag;
+}
+
+textarea::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 8px;
+  background: rgba(255, 215, 0, 0.2);
+  border-radius: 8px;
+}
+
+.file-controls {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+button {
+  background: linear-gradient(135deg, #ffd700, #ffcc00);
+  border: none;
+  padding: 8px 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  color: #8B4513;
+  -webkit-app-region: no-drag;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #ffcc00, #ffb700);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+#page-number {
+  font-weight: bold;
+  color: #8B4513;
+  font-size: 14px;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+}
+
+#prev-btn, #next-btn {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 50%;
+  min-width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.draggable {
+  -webkit-app-region: drag;
+  cursor: move !important;
+}
+
+.draggable * {
+  -webkit-app-region: no-drag;
+}
+
+.draggable textarea,
+.draggable button,
+.draggable .controls,
+.draggable .file-controls {
+  -webkit-app-region: no-drag;
+}
+
+.message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 1000;
+  animation: slideIn 0.3s ease;
+}
+
+.message.success {
+  background: #4CAF50;
+  color: white;
+}
+
+.message.error {
+  background: #f44336;
+  color: white;
+}
+
+.message.info {
+  background: #2196F3;
+  color: white;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Scrollbar styling */
+textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+textarea::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0.5);
+  border-radius: 4px;
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 215, 0, 0.7);
+}
