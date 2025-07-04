@@ -1,0 +1,75 @@
+{
+  "name": "notepad-widget",
+  "version": "1.0.0",
+  "description": "A floating desktop notepad widget built with Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "build-win": "electron-builder --win",
+    "build-mac": "electron-builder --mac",
+    "build-linux": "electron-builder --linux",
+    "dist": "electron-builder --publish=never",
+    "pack": "electron-builder --dir"
+  },
+  "keywords": [
+    "electron",
+    "notepad",
+    "widget",
+    "desktop",
+    "notes",
+    "sticky-notes"
+  ],
+  "author": {
+    "name": "Your Name",
+    "email": "your.email@example.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/yourusername/notepad-widget",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/notepad-widget.git"
+  },
+  "build": {
+    "appId": "com.yourname.notepad-widget",
+    "productName": "Notepad Widget",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer.js",
+      "index.html",
+      "styles.css",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "assets/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+  "devDependencies": {
+    "electron": "^37.2.0",
+    "electron-builder": "^24.0.0"
+  },
+  "dependencies": {
+    "auto-launch": "^5.0.6"
+  }
+}
